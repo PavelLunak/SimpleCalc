@@ -40,6 +40,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     final String MUJ_TAG = "muj_tag";
+    final String TAG_LIFECYCLE = "lifecycle";
 
     // Proměnné pro reference na elementy v XML
     EditText etNumber1;         // Políčko pro první číslo
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         spinnerOperation = findViewById(R.id.spinnerOperation);
         labelResult = findViewById(R.id.labelResult);
 
+        Log.d(TAG_LIFECYCLE, "onCreate()");
         Log.d(MUJ_TAG, "onCreate()");
 
         // Získání pole s položkami pro Spinner (rozbalovací menu) z resources (res/values/strings.xml)
@@ -120,5 +122,41 @@ public class MainActivity extends AppCompatActivity {
             // si poradíme po svém...
             labelResult.setText("Chybné zadání...");
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG_LIFECYCLE, "onStart()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG_LIFECYCLE, "onResume()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG_LIFECYCLE, "onPause()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG_LIFECYCLE, "onStop()");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG_LIFECYCLE, "onRestart()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG_LIFECYCLE, "onDestroy()");
     }
 }
